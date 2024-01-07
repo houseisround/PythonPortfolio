@@ -370,3 +370,248 @@ for i in range(a * b, 1, -1):
     if i % a == 0 and i % b == 0:
         nok = i
 print('НОК =', nok, '\n')"""
+
+
+""" Задача 31: Задайте натуральное число N. Напишите программу, 
+которая составит список простых множителей числа N 
+Пример: 30 => [2,3,5]
+num = int(input("Введите число: "))
+i = 2  # первое простое число
+lst = []
+old = num
+while i <= num:
+    if num % i == 0:
+        lst.append(i)
+        num //= i
+        i = 2
+    else:
+        i += 1
+print(f"Простые множители числа {old} приведены в списке: {lst}")"""
+
+
+"""Задача 32: Задайте последовательность чисел. Напишите программу, 
+которая выведет список неповторяющихся элементов исходной последовательности. 
+Пример: [2,2,3,5] => [3,5] 
+# Решение 4
+
+lst = list(map(int, input("Введите числа через пробел:\n").split()))
+print(f"Исходный список: {lst}")
+new_lst = []
+for i in range (0, len(lst)):
+   duplicate = 0
+   for j in range(0, len(lst)):
+       if i != j:
+           if lst[i] == lst[j]:
+               duplicate = 1
+   if duplicate == 0:
+       new_lst.append(lst[i])
+
+print(f"Список без повторов: {new_lst}")"""
+
+
+""" Задача 43: Создайте список из случаных чисел. 
+Найдите максимальное количество его одинаковых элементов. 
+
+#Решение
+import random
+n = int(input("Сколько элементов? "))
+lst = []
+for i in range(n):
+    lst.append(random.randint(1,10))
+print("Сформирован список: ", lst)
+ 
+max_count = 0 
+for i in range (0,len(lst)):
+    if lst.count(lst[i]) > max_count:
+        max_count=lst.count(lst[i])
+print("Максимальное количество одинаковых элементов", max_count)"""
+
+
+""" Задача 44: Создайте список из случаных чисел. Найдите второй максимум.
+Пример:
+а=[1,2,3] #Первый максимум == 3, второй ==2 
+
+import random
+n = int(input("Сколько элементов? "))
+lst = []
+for i in range(n):
+    lst.append(random.randint(1,10))
+print("Сформирован список: ", lst)
+
+max_num = max (lst)
+lst2 = []
+for i in range(0,len(lst)):
+    if lst[i] != max_num:
+        lst2.append(lst[i])
+
+max_num = max (lst2)
+print(lst2, max_num)"""
+
+
+""" Задача 46: Фрукты
+Пользователь вводит число K - количество фруктов. 
+Затем он вводит K фруктов в формате: название фрукта и его количество. 
+Добавьте все фрукты в словарь, где название фрукта - это ключ, 
+а количество - значение. 
+Например: 
+# Ввод:
+>> 3 # Количество фруктов
+>> Яблоко
+>> 3
+>> Апельсин
+>> 3
+>> Мандарин
+>> 10
+# Вывод:
+>> {'Яблоко': 3, 'Апельсин': 3, 'Мандарин': 10}  
+
+import os
+os.system('cls||clear')
+
+dictFruit = {}
+amount = int(input("Введите количество фруктов: "))
+for i in range(amount):
+    name = input("Введите название фрукта: ")
+    amountFruit = int(input("Введите количество фрукта: "))
+    dictFruit[name] = amountFruit
+print(dictFruit)"""
+
+
+""" Задача 47: Старший и младший
+Пользователь вводит число N. 
+Затем он вводит личные данные (имя и возраст) своих N друзей. 
+Создайте список friends и добавьте в него N словарей с ключами name и age. 
+Найдите самого младшего из друзей и выведите его имя. 
+Пример:
+>> 3 # Количество друзей
+>> Иван
+>> 11
+>> Саша
+>> 12
+>> Леша
+>> 10
+# Вывод:
+>> Леша 
+
+# Решение 
+
+N = int(input("Введите количество друзей: "))
+friends = []
+
+for friend_number in range(N):
+    name = input("Введите имя друга: ")
+    age = int(input("Введите возраст друга: "))
+    friends.append({"name": name, "age": age})
+print(friends)
+min_age = friends[0]['age'] 
+for some_dict in friends:
+    if some_dict['age'] < min_age: 
+        min_age = some_dict['age'] 
+for some_dict in friends:
+        if some_dict['age'] == min_age:
+            print(some_dict['name'])
+            break"""
+
+
+""" Задача 49: Английский словарь
+"Пора учить английский язык", - сказал себе Степа и решил написать 
+программу для изучения английского языка. Программа получает на 
+вход слово на английском языке и несколько его переводов на русском языке. 
+Составьте словарь, в котором ключ - это английское слово, 
+а значение - это список русских слов. В этой задаче нужно использовать
+строчный метод split(). 
+Пример
+  Ввод:
+ >> 4 # Количество слов
+ >> apple - яблоко
+ >> orange - оранжевый, рыжий, апельсин
+ >> grape - виноград, виноградный, гроздь
+ >> easy - простой, легкий, нетрудный, удобный, несложный
+  Вывод:
+ >> {'apple': ['яблоко'], 'orange': ['оранжевый', 'рыжий', 'апельсин'], 'grape': ['виноград', 'виноградный', 'гроздь'], 'easy': ['простой', 'легкий', 'нетрудный', 'удобный', 'несложный']}
+
+# Решение
+glossary = {}
+amount = int(input("Количество слов в словаре: "))
+
+for _ in range(amount):
+    eng_rus_str = input("Введите строку из примера: \n")
+    some_list = eng_rus_str.split(' - ')
+    glossary[some_list[0]] = some_list[1].split(', ')
+
+print(glossary)
+
+
+eng_word = input('Введите слово для перевода: ')
+if glossary.get(eng_word):
+    print(', '.join(glossary.get(eng_word))) 
+else:
+    print('Такого слова нет')"""
+
+
+
+"""Задача 54: Напишите игру "крестики-нолики"с двумя игроками.
+
+список внутри списков - матрица - двумерный массив
+сперва ходят крестики
+
+def check_win_draw(some_field):
+    a1 = some_field[0][0]
+    a2 = some_field[0][1]
+    a3 = some_field[0][2]
+    b1 = some_field[1][0]
+    b2 = some_field[1][1]
+    b3 = some_field[1][2]
+    c1 = some_field[2][0]
+    c2 = some_field[2][1]
+    c3 = some_field[2][2]
+    if a1 == a2 == a3 != '-':
+        return f'Победа {a1}'
+    elif b1 == b2 == b3 != '-':
+        return f'Победа {b1}'
+    elif c1 == c2 == c3 != '-':
+        return f'Победа {c1}'
+    elif a1 == b1 == c1 != '-':
+        return f'Победа {a1}'
+    elif a2 == b2 == c2 != '-':
+        return f'Победа {a2}'
+    elif a3 == b3 == c3 != '-':
+     return f'Победа {a3}'
+    elif a1 == b2 == c3 != '-':
+        return f'Победа {a1}'
+    elif a3 == b2 == c1 != '-':
+        return f'Победа {a3}'
+    elif field[0].count('-') == 0 and field[1].count('-') == 0 and field[2].count('-') == 0: 
+        return 'Ничья'
+    else:
+        return False
+
+field = [['-' for _ in range(3)] for _ in range(3)]
+for row in field: 
+    for col in row: 
+        print(col, end=" ") 
+    print() 
+print(*field, sep='\n')
+letter_number = {'a': 0, 'b': 1, 'c': 2}
+while True:
+    x = input('Ходит Х. Введите номер клетки в формате "букву строки : номер столбца": ')
+    if field[letter_number[x[0]]][int(x[-1]) - 1] != '-':
+        print('Эта клетка уже занята')
+        continue
+    field[letter_number[x[0]]][int(x[-1]) - 1] = 'X'
+    if check_win_draw(field):
+        print(check_win_draw(field))
+        break  
+    o = input('Ходит 0. Введите номер клетки в формате "букву строки : номер столбца": ') 
+    while field[letter_number[o[0]]][int(o[-1]) - 1] != '-':
+        print('Эта клетка уже занята')
+        o = input('Ходит 0. Введите номер клетки в формате "букву строки : номер столбца": ') 
+    field[letter_number[o[0]]][int(o[-1]) - 1] = '0'
+    if check_win_draw(field):
+        print(check_win_draw(field))
+        break
+    print(*field, sep='\n')
+    print('Играем дальше')"""
+
+
+
